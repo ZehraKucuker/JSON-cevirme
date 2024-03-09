@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Çevirme</title>
+</head>
+<br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" />
+
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" /> </br> </br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" />
+
+    <label for="identifier">Identifier:</label>
+    <input type="text" id="identifier" />
+
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" /> </br> </br>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" />
+
+    <button onclick="convertToJson()">Çevir</button>
+
+    <div id="jsonOutput"></div>
+
+    <script>
+        var allDataEntries = [];
+
+        function convertToJson() {
+            var nameValue = document.getElementById('name').value;
+            var surnameValue = document.getElementById('surname').value;
+            var emailValue = document.getElementById('email').value;
+            var identifierValue = document.getElementById('identifier').value;
+            var phoneValue = document.getElementById('phone').value;
+            var addressValue = document.getElementById('address').value;
+
+            var previousData = {
+                name: nameValue,
+                surname: surnameValue,
+                email: emailValue,
+                identifier: identifierValue,
+                phone: phoneValue,
+                address: addressValue
+            };
+
+            allDataEntries.push(previousData);
+
+            document.getElementById('jsonOutput').innerHTML = '<pre>' + JSON.stringify(allDataEntries, null, 2) + '</pre>';
+
+            document.getElementById('name').value = '';
+            document.getElementById('surname').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('identifier').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('address').value = '';
+        }
+    </script>
+</body>
+</html>
